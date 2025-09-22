@@ -18,14 +18,14 @@ class Parent extends React.Component {
         {
           id: 2,
           header: "Which sooccer team has the best record?",
-          picture:  ['Barca.png','NMadrid.png','PSG.png'],
+          picture: ['Barca.png','NMadrid.png','PSG.png'],
           index: 0
         },
 
         {
           id: 3,
           header: "Which country would like to visit first?",
-          picture:[ 'CMR.png','SENE.png', 'Chad.png'],
+          picture:[ 'CMR.png','Cote.png', 'Chad.png'],
           index: 0
         },
       ],
@@ -83,7 +83,7 @@ class Child extends React.Component {
     return (
       <div>
         <h1>{this.props.header}</h1>
-        <img src={this.props.picture} />
+  <img className="styled-image" src={this.props.picture} alt={this.props.header} />
         <button type='button' onClick={this.handleButtonClick}>Action</button>
       </div>
     );
