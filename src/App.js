@@ -3,54 +3,93 @@ import './App.css';
 
 
 class Parent extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
 
-    this.state= {
+    this.state = {
       children: [
         {
-          header: "first child",
+          id: 1,
+          header: "Which HBCU institution has the best CAFETERIA?",
+          picture: ['Morehouse.png', 'Spelman.png', 'CAU.png'],
+          index: 0
+
+        },
+        {
+          id: 2,
+          header: "Which sooccer team has the best record?",
+          picture:  ['Barca.png','NMadrid.png','PSG.png'],
+          index: 0
+        },
+
+        {
+          id: 3,
+          header: "Which country would like to visit first?",
+          picture:[ 'CMR.png','SENE.png', 'Chad.png'],
+          index: 0
         },
       ],
-    };    
+    };
+  this.handleCounterUpdate= this.handleCounterUpdate.bind(this);
+}
+  handleCounterUpdate(childId) {
+    this.setState(prevState => {
+      const updatedChildren = prevState.children.map(child => {
+        if (child.id === childId) {
+          // increment index, loop back to 0 when exceeding array length
+          const newIndex = (child.index + 1) % child.picture.length;
+          return { ...child, index: newIndex };
+        }
+        return child;
+      });
+      return { children: updatedChildren };
+    });
   }
 
   render() {
-
-    return(
+    return (
       <div>
-        <p><b>Hello we made it to our first project!!</b></p>
+       
+        {this.state.children.map(child=>(
         <Child
-          id='1'
-          header="1st child"
-          picture='logo192.png'
+          key={child.id}
+          id={child.id}
+          header={child.header}
+          picture= {child.picture[child.index]}
+          onButtonclick={this.handleCounterUpdate}
         />
+        ))}
       </div>
+     
     )
   }
 }
 
 
 class Child extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.handleButtonClick = this.handleButtonClick.bind(this);
   }
 
-  handleButtonClick(){
+  handleButtonClick() {
     console.log('In this function we want to emit an event to the parent component!!')
+     console.log("Child clicked:", this.props.id);
+     this.props.onButtonclick(this.props.id);
   }
+  
 
   render() {
-    return(
+    return (
       <div>
         <h1>{this.props.header}</h1>
-        <img src={this.props.picture}/>
+        <img src={this.props.picture} />
         <button type='button' onClick={this.handleButtonClick}>Action</button>
       </div>
     );
 
   }
+
 
 }
 
