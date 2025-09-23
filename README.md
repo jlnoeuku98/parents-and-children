@@ -20,7 +20,7 @@ This can be done in your terminal or the prefered IDE. Open the folder which you
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 To dockorize the page use docker build followed with an argument
-![Alt text](image/Dockerbuild.png) 
+![Alt text](image/Dockbuild.png) 
 After docker build do ## docker run which will uplaod the folder into the deocker desktop
 ![Alt text](image/dockrun.png)
 
