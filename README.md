@@ -4,7 +4,7 @@
 Clone the repository unto your desktop from your github
 ![Alt text](image/gitclone.png) 
 This will create a copy of your project on you computer from which you can edit.
-![Alt text](image/folde.png) 
+![Alt text](image/folder.png) 
 
 ## Run the code on the terminal
 In the project directory, you can run: using "npm start"
